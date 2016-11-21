@@ -1,0 +1,263 @@
+// @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,500i,700,900');
+
+$color-a: #f44336;
+$color-b: #3f51b5;
+
+$tg-thermometer-w: 100px;
+
+body {
+	font-family: "Roboto", sans-serif;
+	font-size: 12px;
+}
+
+.tg-thermometer {
+	width: $tg-thermometer-w;
+	position: relative;
+
+	&.small {
+
+		.meter {
+			width: 6px;
+
+			.mask {
+				width: 6px;
+			}
+		}
+
+		.draw-a {
+			width: 20px;
+
+			&:after {
+				width: 32px;
+				height: 32px;
+				left: -6px;
+				bottom: -10px;
+			}
+		}
+
+		.draw-b {
+
+			&:before {
+				width: 6px;
+			}
+
+			&:after {
+				width: 14px;
+				height: 14px;
+			}
+		}
+
+		.percent-b, .percent-d {
+			display: none;
+		}
+	}
+
+	.statistics {
+		position: absolute;
+		left: 0;
+		z-index: 1;
+		font-size: 1em;
+		top: 0;
+		height: 100%;
+		font-style: italic;
+		font-weight: 500;
+		text-shadow: 1px 1px #fff;
+
+		.percent {
+			border-bottom: 1px solid rgba(0, 0, 0, .2);
+			text-align: right;
+			position: absolute;
+			width: 40px;
+
+			&.percent-a { bottom: calc(100% - 2px); }
+			&.percent-b { bottom: calc(75% - 2px); }
+			&.percent-c { bottom: calc(50% - 2px); }
+			&.percent-d { bottom: calc(25% - 2px); }
+			&.percent-e { bottom: calc(0% - 2px); }
+		}
+	}
+
+	.meter {
+		width: 10px;
+		margin: auto;
+		left: 0;
+		right: 0;
+		height: calc(100% - 58px);
+		top: 12px;
+		position: absolute;
+		background-color: #d6d6d6;
+		border-radius: 10px 10px 0 0;
+		z-index: 1;
+
+		.mercury {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			background-color: $color-a;
+			border-radius: 10px 10px 0 0;
+			background: linear-gradient(0deg, $color-a, $color-b);
+			transition: all .5s ease-in-out;
+			height: 0;
+		}
+
+		.mask {
+			position: absolute;
+			bottom: 0;
+			overflow: hidden;
+			width: 10px;
+			height: 100%;
+			border-radius: 10px 10px 0 0;
+		}
+
+		.bg-color {
+			position: absolute;
+			width: 10px;
+			background: linear-gradient(#2196F3, #8BC34A, #F44336);
+			bottom: 0;
+		}
+
+		.percent-current {
+			position: absolute;
+			left: 0;
+			top: 4px;
+			transform: translateX(calc(-100% - 8px)) translateY(-50%);
+			background-color: #fff;
+			padding: 5px 10px;
+			box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 3px 3px 6px rgba(0, 0, 0, 0.1);
+			border-radius: 2px;
+			font-weight: 500;
+			font-size: 1.5em;
+			color: #333;
+
+			&:after {
+				border-left: 8px solid white;
+				border-top: 6px solid transparent;
+				border-bottom: 6px solid transparent;
+				content: "";
+				position: absolute;
+				right: 0;
+				transform: translateX(calc(100% - 2px));
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				width: 0;
+				height: 0;
+			}
+
+			&:before {
+				border-left: 7px solid rgba(0, 0, 0, .2);
+				border-top: 6px solid transparent;
+				border-bottom: 6px solid transparent;
+				content: "";
+				position: absolute;
+				right: 0;
+				transform: translateX(calc(100% - 0px));
+				top: 0;
+				bottom: 0;
+				margin: auto;
+				width: 0;
+				height: 0;
+			}
+		}
+	}
+
+	.draw-a {
+		background-color: #fff;
+		height: calc(100% - 20px);
+		width: 30px;
+		margin: auto;
+		position: relative;
+		border-radius: 20px 20px 0 0;
+		box-shadow: 0 0 0 1px rgba(0, 0, 0, .05), 1px 1px 5px rgba(0, 0, 0, .2);
+
+		&:before {
+			width: 100%;
+			bottom: 0px;
+			left: 0;
+			position: absolute;
+			height: 50px;
+			background-color: #fff;
+			content: "";
+			z-index: 1;
+		}
+
+		&:after {
+			content: "";
+			width: 50px;
+			height: 50px;
+			position: absolute;
+			background-color: #fff;
+			left: -10px;
+			bottom: -20px;
+			border-radius: 50%;
+			box-shadow: 0 0 0 1px rgba(0, 0, 0, .05), 1px 1px 5px rgba(0, 0, 0, .2);
+		}
+	}
+
+	.draw-b {
+		position: absolute;
+		width: 50px;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+		height: 50px;
+		z-index: 1;
+
+		&:after {
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			width: 24px;
+			height: 24px;
+			background-color: #f44336;
+			content: "";
+			border-radius: 50%;
+		}
+
+		&:before {
+			position: absolute;
+			left: 0;
+			right: 0;
+			width: 10px;
+			top: 0;
+			margin: auto;
+			height: 20px;
+			background-color: $color-a;
+			content: "";
+			border-radius: 10px 10px 0 0;
+		}
+	}
+}
+
+.centered {
+	position: absolute !important;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	width: $tg-thermometer-w * 3;
+	height: 300px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.title {
+	text-align: center;
+	margin: 60px 0 0;
+
+	.upper {
+		text-transform: uppercase;
+	}
+
+	a {
+		text-decoration: none;
+		color: #3F51B5;
+	}
+}
