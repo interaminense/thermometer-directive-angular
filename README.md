@@ -7,7 +7,7 @@ Directive created to give agility in the construction of a simple thermometer
 ### Directive
 
 ```html
-<tg-thermometer-vertical percent="100" size="small" height="120" /></tg-thermometer-vertical>
+<tg-thermometer-vertical percent="100" size="small" height="120"></tg-thermometer-vertical>
 ```
 
 ### Documentation
